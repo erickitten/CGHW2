@@ -14,7 +14,7 @@ int main(void)
         return -1;
 
     // Create a windowed mode window and its OpenGL context
-    window = glfwCreateWindow(320, 320, "CGHW2", NULL, NULL);
+    window = glfwCreateWindow(500, 500, "CGHW2", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -44,9 +44,5 @@ int main(void)
 static void render()
 {
     GLWrapper::clearScreen();
-    // Complete your code here
-    // if a is press??
-    HW2::drawCircle(0, 0, 0.25, 200);
-    // else draw Model
-
+    GLWrapper::drawLine(0,0,0.5,0.5);
 }
