@@ -24,7 +24,7 @@ void GLWrapper::setPointColor(float r, float g, float b)
 void GLWrapper::drawLine(float x1, float y1, float x2, float y2)
 {
     int i;
-    int samp = 200 * sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
+    int samp = 250 * sqrt((x1-x2)*(x1-x2) + (y1-y2)*(y1-y2));
     float vecx = (x2-x1)/samp;
     float vecy = (y2-y1)/samp;
     float curx = x1;
