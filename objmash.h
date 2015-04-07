@@ -1,10 +1,18 @@
+#ifndef _OBJMASH_H
+#define _OBJMASH_H
 
+#include <string>
+#include <vector>
 
 class ObjMash{
-    string name;
-    vector<float> v;
-    vector<vector<int>> f;
+    std::string name;
+    std::vector<float> v;
+    std::vector<std::vector<int>> f;
 
-    void readFromFile(string fn);
-}
+public:
+    ObjMash();
+    ObjMash(std::string fn);
+    void readFromFile(std::string fn);    
+};
 
+#endif

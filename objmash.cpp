@@ -2,6 +2,19 @@
 
 #include <iostream>
 #include <fstream>
+#include <sstream>
+#include <string>
+#include <vector>
+
+using namespace std;
+
+ObjMash::ObjMash(){
+
+}    
+
+ObjMash::ObjMash(string fn){
+    readFromFile(fn);
+}
 
 void ObjMash::readFromFile(string fn){
     fstream mashFile;
@@ -10,7 +23,7 @@ void ObjMash::readFromFile(string fn){
 
     mashFile.open(fn,ios::in);
     
-    while(getline(fn,line)){
+    while(getline(mashFile,line)){
         iss.str(line);
         iss >> tok;
 

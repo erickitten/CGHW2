@@ -1,12 +1,23 @@
 #include <GLFW/glfw3.h>
 #include <cstdlib>
+#include <string>
+#include <vector>
 #include "hw2.h"
 #include "glwrapper.h"
+#include "objmash.h"
+
+using namespace std;
 
 static void render();
 
-int main(void)
+int main(int argc,char *argv[])
 {
+    ObjMash o;
+    if(argc > 1){
+        o.readFromFile(string(argv[2]));
+    }else{
+
+    }
     GLFWwindow* window;
 
     // Initialize the library
@@ -45,4 +56,6 @@ static void render()
 {
     GLWrapper::clearScreen();
     GLWrapper::drawLine(0,0,0.5,0.5);
+    GLWrapper::drawLine(-1,-0.9,1,-0.9);
+
 }
