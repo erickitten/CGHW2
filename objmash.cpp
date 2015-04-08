@@ -1,5 +1,6 @@
 #include "objmash.h"
 
+#include <glm/glm.hpp>
 #include <iostream>
 #include <fstream>
 #include <sstream>
@@ -7,10 +8,10 @@
 #include <vector>
 
 using namespace std;
+using namespace glm;
 
 ObjMash::ObjMash(){
-
-}    
+}
 
 ObjMash::ObjMash(string fn){
     readFromFile(fn);
@@ -28,13 +29,11 @@ void ObjMash::readFromFile(string fn){
         iss >> tok;
 
         if(tok == "v"){
-            float tmp;
-            iss >> tmp; //x
-            v.push_back(tmp);
-            iss >> tmp; //y
-            v.push_back(tmp);
-            iss >> tmp; //z
-            v.push_back(tmp);
+            vec3 v(0.0);
+            iss >> v[0]; //x
+            iss >> v[1]; //y
+            iss >> v[2]; //z
+            vertex.push_back(v);
         }else if(tok == "f"){
             int tmp;
             vector<int> s;
@@ -48,10 +47,14 @@ void ObjMash::readFromFile(string fn){
             iss >> name;
         }
     }
-
 }
 
-
-
+//for transforms
+void ObjMash::multiplyBy(mat4 mat){
+    int i;
+    for(i=0;i<vertex.size();i++){
+        vertex[i] = vec3(vec4(vertex[i],1.0) * mat);
+    }
+}
 
 
