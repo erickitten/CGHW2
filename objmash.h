@@ -8,7 +8,7 @@
 class ObjMash{
     std::string name;
     std::vector<glm::vec3> vertex;
-    std::vector<std::vector<int>> f;
+    std::vector<std::vector<int>> surface;
 
 public:
     ObjMash();

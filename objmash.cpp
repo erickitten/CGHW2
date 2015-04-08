@@ -40,7 +40,7 @@ void ObjMash::readFromFile(string fn){
             while(iss >> tmp){
                 s.push_back(tmp);
             }
-            f.push_back(s);
+            surface.push_back(s);
         }else if(tok == "#"){
             continue;
         }else if(tok == "o"){
