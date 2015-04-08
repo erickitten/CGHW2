@@ -6,6 +6,8 @@
 #include <vector>
 
 class ObjMash{
+    friend class WorldView;
+private:
     std::string name;
     std::vector<glm::vec3> vertex;
     std::vector<std::vector<int>> surface;
