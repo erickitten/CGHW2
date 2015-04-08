@@ -2,7 +2,6 @@
 #include <cstdlib>
 #include <string>
 #include <vector>
-#include "hw2.h"
 #include "glwrapper.h"
 #include "objmash.h"
 
