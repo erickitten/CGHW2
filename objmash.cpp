@@ -26,7 +26,9 @@ void ObjMash::readFromFile(string fn){
     
     while(getline(mashFile,line)){
         iss.str(line);
-        iss >> tok;
+        if(!(iss >> tok)){
+            continue;
+        }
 
         if(tok == "v"){
             vec3 v(0.0);
