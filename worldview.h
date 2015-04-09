@@ -11,8 +11,8 @@ private:
     bool orthogonal;
 
 
-    vector<ObjMash> attObj;
-    vector<glm::vec3> vertexBuf;
+    std::vector<ObjMash> attObj;
+    std::vector<glm::vec3> vertexBuf;
     std::vector<std::vector<int>> surfaceBuf;
 
 
@@ -20,7 +20,6 @@ private:
     void copyToBuf();
 public:
     void attach(ObjMash & obj);
-    void setCamera();
     void drawScreen();
 };
 

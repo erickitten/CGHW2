@@ -3,8 +3,11 @@
 #include <glm/glm.hpp>
 #include <vector>
 #include "objmash.h"
+#include "glwrapper.h"
+#include "makemat.h"
 
 using namespace glm;
+using namespace std;
 
 
 void WorldView::bufMultiplyBy(mat4 mat){
@@ -24,19 +27,34 @@ void WorldView::copyToBuf(){
         }
         for(k=0;k<attObj[i].surface.size();k++){
             //
-            surfaceBuf[frame_f +k] = frame_v + attObj[i].surface[k];
+            surfaceBuf[frame_f +k] = attObj[i].surface[k];
         }
         frame_v += j;
         frame_f += k;
     }
 }
 
-void doModelView(){
 
-
-}
 
 void WorldView::attach(ObjMash & obj){
     attObj.push_back(obj);
 }
 
+void WorldView::drawScreen(){
+    int i,j;
+
+    copyToBuf();
+    bufMultiplyBy(MakeMat::modelView(
+                vec3(0.0f,0.0f,-2.0f),vec3(0.0f,0.0f,1.0f)));
+    bufMultiplyBy(MakeMat::othoNorm());
+    bufMultiplyBy(MakeMat::othoProj());
+    
+    for(i=0;i<surfaceBuf.size();i++){
+        vector<int> & curr = surfaceBuf[i];
+        for(j=1;j<curr.size();j++){
+            GLWrapper::drawLine(vertexBuf[curr[j-1]][0],
+                    vertexBuf[curr[j-1]][1],vertexBuf[curr[j]][0],
+                    vertexBuf[curr[j]][1]);
+        }
+    }
+}
